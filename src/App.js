@@ -5,7 +5,6 @@ import "./App.css";
 class Multiplevalue extends Component {
   state = {
     stateofText: "",
-    multipleaccess: false,
     array: [],
     count: 1
   };
@@ -23,13 +22,10 @@ class Multiplevalue extends Component {
           onClick={() =>
             this.setState({
               stateofText: this.props.data,
-              multipleaccess: true
             })
           }
         >
-          {this.state.stateofText && (
-            <label onClick={this.increment}>{this.state.stateofText}</label>
-          )}
+          <label onClick={this.increment}>{this.state.stateofText}</label>
         </li>
         {this.state.array.map((data, index) => {
           return <Multiplevalue data={data} key={index} />;
