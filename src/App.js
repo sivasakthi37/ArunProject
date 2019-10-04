@@ -5,7 +5,7 @@ import "./App.css";
 class Multiplevalue extends Component {
   state = {
     stateofText: "",
-    Textarray: [],
+    array: [],
     count: 1
   };
   componentDidMount() {
@@ -13,23 +13,17 @@ class Multiplevalue extends Component {
   }
   increment = () => {
     this.setState({ count: this.state.count + 1 });
-    this.state.Textarray.push(this.state.stateofText + this.state.count);
+    this.state.array.push(this.state.stateofText + this.state.count);
   };
   render() {
     return (
       <ul>
-        <li
-          onClick={() =>
-            this.setState({
-              stateofText: this.props.data
-            })
-          }
-        >
-          <label onClick={this.increment}>{this.state.stateofText}</label>
+        <li onClick={this.increment}>
+          {this.state.stateofText}
+          {this.state.array.map((data, index) => {
+            return <Multiplevalue data={data} key={index} />;
+          })}
         </li>
-        {this.state.Textarray.map((data, index) => {
-          return <Multiplevalue data={data} key={index} />;
-        })}
       </ul>
     );
   }
